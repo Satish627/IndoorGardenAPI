@@ -9,18 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/garden")
+@RequestMapping("/indoorGarden")
 public class GardenController {
     private final GardenService gardenService;
 
     public GardenController(GardenService gardenService) {
         this.gardenService = gardenService;
     }
-    @PostMapping
+    @PostMapping("/gardens")
     private Garden saveGarden(@RequestBody Garden garden){
         return gardenService.saveGarden(garden);
     }
-    @GetMapping
+    @GetMapping("/gardens")
     private List<Garden> getAllGardens(){
         return gardenService.getAllGardens();
     }
@@ -29,7 +29,7 @@ public class GardenController {
     private Optional<Garden> getGardenById(@PathVariable("id") Long id){
         return gardenService.getGardenById(id);
     }
-    @PutMapping
+    @PutMapping("/gardens")
     private Garden updateGarden(@RequestBody Garden garden){
         return gardenService.updateGarden(garden);
     }

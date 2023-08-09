@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/measurement")
+@RequestMapping("/measurements")
 public class MeasurementController {
 
     private final MeasurementService measurementService;
@@ -18,6 +18,10 @@ public class MeasurementController {
         this.measurementService = measurementService;
     }
 
+    @GetMapping("/{id}")
+    private Optional<Measurement> getMeasurementById(@PathVariable("id") Long id){
+        return measurementService.getMeasurementById(id);
+    }
     @PostMapping
     private Measurement saveMeasurement(@RequestBody Measurement measurement){
         return measurementService.saveMeasurement(measurement);
@@ -27,10 +31,7 @@ public class MeasurementController {
         return measurementService.getAllMeasurements();
     }
 
-    @GetMapping("/{id}")
-    private Optional<Measurement> getMeasurementById(@PathVariable("id") Long id){
-        return measurementService.getMeasurementById(id);
-    }
+
     @PutMapping
     private Measurement updateMeasurement(@RequestBody Measurement measurement){
         return measurementService.updateMeasurement(measurement);

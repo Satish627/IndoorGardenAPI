@@ -10,7 +10,6 @@ public interface GardenService {
     Garden saveGarden(Garden garden);
     List<Garden> getAllGardens();
     Optional<Garden> getGardenById(Long id);
-
     Garden updateGarden(Garden garden);
     void deleteGarden(Long id);
 }
